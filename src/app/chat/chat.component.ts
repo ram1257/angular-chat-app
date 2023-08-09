@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ChatService } from '../service/chat.service';
 
 @Component({
@@ -13,11 +12,22 @@ export class ChatComponent {
 
   constructor(private chatService: ChatService) {}
 
+  StringConvert(str: string) {
+    return JSON.stringify(str);
+  }
+
+  ngOnInit() {}
+
   sendMessage() {
     if (this.newMessage.trim() === '') return;
-
-    this.messages.push({ text: this.newMessage, user: 'user' });
+    this.chatService.messagesSubject.next([
+      ...this.chatService.messagesSubject.getValue(),
+      { text: this.newMessage, user: 'user' },
+    ]);
+    this.chatService.sendMessage(this.newMessage);
     this.newMessage = '';
-    this.chatService.sendMessage(this.messages[this.messages.length - 1].text);
+    this.chatService.messagesSubject.subscribe(values=>{
+      this.messages = values
+    })
   }
 }

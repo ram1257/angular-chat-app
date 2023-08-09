@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ChatService {
-  private messagesSubject = new BehaviorSubject<any[]>([]);
+  public messagesSubject = new BehaviorSubject<any[]>([]);
   public messages$: Observable<any[]> = this.messagesSubject.asObservable();
 
   constructor(private http: HttpClient) {}
@@ -22,7 +22,7 @@ export class ChatService {
   sendMessage(messageText: string): void {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: 'Bearer YOUR_OPENAI_API_KEY',
+      Authorization: 'Bearer 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',
     });
 
     const data = {
@@ -30,6 +30,8 @@ export class ChatService {
         { role: 'system', content: 'You are a helpful assistant.' },
         { role: 'user', content: messageText },
       ],
+      model: 'gpt-3.5-turbo',
+      max_tokens: 50
     };
     if (this.APISelector(messageText)) {
       // Need to add the image API call

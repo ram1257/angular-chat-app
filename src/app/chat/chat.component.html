@@ -1,12 +1,31 @@
 <div class="chat-wrapper">
   <div class="chat-container">
     <div class="chat-history">
-      <div class="message message-left" *ngFor="let message of messages">
-        {{ message.text }}
+      <div
+        class="message"
+        [ngStyle]="{ display: messages.length === 0 ? 'none' : 'block' }"
+        *ngFor="let message of messages"
+      >
+        <ng-container *ngIf="message.user === 'user'; else assistantMessage">
+          <div class="user">
+            {{ message.text }}
+          </div>
+        </ng-container>
+        <ng-template #assistantMessage>
+          <div class="assistant">
+            <p>
+              {{ message.text }}
+            </p>
+          </div>
+        </ng-template>
       </div>
     </div>
     <div class="chat-input">
-      <input [(ngModel)]="newMessage" placeholder="Type your message..." (keyup.enter)="sendMessage()" />
+      <input
+        [(ngModel)]="newMessage"
+        placeholder="Type your message..."
+        (keyup.enter)="sendMessage()"
+      />
       <button (click)="sendMessage()">Send</button>
     </div>
   </div>
