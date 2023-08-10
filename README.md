@@ -26,7 +26,7 @@ This Angular chat application integrates with the OpenAI Chat API to create a co
 1. Clone this repository to your local machine:
 
    ```bash
-   git clone https://github.com/yourusername/angular-chat-openai.git
+   git clone https://github.com/ram1257/angular-chat-app.git
 2. Navigate to the project directory:
     ```bash
    cd angular-chat-openai
