@@ -22,7 +22,8 @@ export class ChatService {
   sendMessage(messageText: string): void {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: 'Bearer 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',
+      Authorization:
+        'Bearer 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',
     });
 
     const data = {
@@ -31,14 +32,32 @@ export class ChatService {
         { role: 'user', content: messageText },
       ],
       model: 'gpt-3.5-turbo',
-      max_tokens: 50
+      max_tokens: 50,
     };
+
+    const ImageData = {
+      model: 'image-alpha-001',
+      prompt: messageText,
+      num_images: 1,
+      size: '512x512',
+      response_format: 'url',
+    };
+
     if (this.APISelector(messageText)) {
-      // Need to add the image API call
-      console.log('Image API call');
+      this.http
+        .post<any>('https://api.openai.com/v1/images/generations', ImageData, {
+          headers,
+        })
+        .subscribe((response) => {
+          console.log(response, 'image');
+          const assistantMessage = response.data[0].url;
+          const newMessage = { text: assistantMessage, user: 'assistant-image' };
+          this.messagesSubject.next([
+            ...this.messagesSubject.getValue(),
+            newMessage,
+          ]);
+        });
     } else {
-      console.log(this.APISelector(messageText));
-      
       this.http
         .post<any>('https://api.openai.com/v1/chat/completions', data, {
           headers,

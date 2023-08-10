@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { ChatComponent } from './chat/chat.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { StringDataPipe } from './string-data.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChatComponent
+    ChatComponent,
+    StringDataPipe
   ],
   imports: [
     BrowserModule,
