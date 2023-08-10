@@ -24,7 +24,7 @@ export class ChatService {
       'Content-Type': 'application/json',
       // PUT YOUR API KEY here
       Authorization:
-        'Bearer <PUT YOUR API KEY here>',
+        'Bearer <YOUR_API_KEY>',
     });
 
     const data = {
