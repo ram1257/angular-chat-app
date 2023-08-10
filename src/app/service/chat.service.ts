@@ -22,8 +22,9 @@ export class ChatService {
   sendMessage(messageText: string): void {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
+      // PUT YOUR API KEY here
       Authorization:
-        'Bearer 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',
+        'Bearer <PUT YOUR API KEY here>',
     });
 
     const data = {
