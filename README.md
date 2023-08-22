@@ -9,7 +9,7 @@ This is a sample Angular chat application that utilizes the OpenAI Chat API to g
 - [Setup](#setup)
 - [Usage](#usage)
 - [API Key](#api-key)
-- [image](#image)
+- [Image](#image)
 
 ## Introduction
 
@@ -26,10 +26,10 @@ This Angular chat application integrates with the OpenAI Chat API to create a co
 1. Clone this repository to your local machine:
 
    ```bash
-   git clone https://github.com/yourusername/angular-chat-openai.git
+   git clone https://github.com/ram1257/angular-chat-app.git
 2. Navigate to the project directory:
     ```bash
-   cd angular-chat-openai
+   cd angular-chat-app
 4. Install the required dependencies:
     ```bash
     npm install
@@ -37,7 +37,7 @@ This Angular chat application integrates with the OpenAI Chat API to create a co
 ## Usage
 1. Start the Angular development server:
    ```bash
-    npm instal
+    ng serve
 3. Open your web browser and navigate to http://localhost:4200 to access the application.
 4. Engage in conversations with the chat interface. The application will use the OpenAI Chat API to generate responses based on the conversation context.
 
