@@ -24,10 +24,10 @@
     <div class="chat-input">
       <input
         [(ngModel)]="newMessage"
-        placeholder="Type your message..."
+        placeholder="Send a message"
         (keyup.enter)="sendMessage()"
       />
-      <button (click)="sendMessage()">Send</button>
+      <img src="../../assets/send-icon.svg" (click)="sendMessage()" alt="send" class="">
     </div>
   </div>
 </div>
